@@ -10,7 +10,7 @@ class Enterprise(
     }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val enterprise = Enterprise(
         name = "Global Innovations Ltd.",
         employees = 150,
