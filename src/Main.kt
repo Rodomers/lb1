@@ -1,12 +1,12 @@
 class Enterprise(
-    val name: String,
+    var name: String,
     private val employees: Int,
     private val prodRate: Int,
     private val hourFee: Float,
     private val incomeTax: Float
 ) {
     fun countPayout(): Int {
-        return (employees * prodRate * hourFee * incomeTax).toInt()
+        return (employees * prodRate * hourFee * (1 - incomeTax)).toInt()
     }
 }
 
