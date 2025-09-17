@@ -1,10 +1,20 @@
 class Enterprise(
     var name: String,
-    private val employees: Int,
-    private val prodRate: Int,
-    private val hourFee: Float,
-    private val incomeTax: Float
+    private var employees: Int,
+    private var prodRate: Int,
+    private var hourFee: Float,
+    private var incomeTax: Float
 ) {
+    fun changeName(newValue: String) { name = newValue }
+
+    fun changeEmployees(newValue: Int) { employees = newValue }
+
+    fun changeProdRate(newValue: Int) { prodRate = newValue }
+
+    fun changeHourFee(newValue: Float) { hourFee = newValue }
+
+    fun changeIncomeTax(newValue: Float) { incomeTax = newValue }
+
     fun countPayout(): Int {
         return (employees * prodRate * hourFee * (1 - incomeTax)).toInt()
     }
