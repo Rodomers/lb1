@@ -7,7 +7,13 @@ class Enterprise(
 ) {
     fun changeName(newValue: String) { if (newValue != "") name = newValue else name }
 
-    fun changeEmployees(newValue: Int) { employees = if (newValue >= 0) newValue else employees }
+    fun changeEmployees(newValue: Int) {
+        employees = try {
+            if (newValue >= 0) newValue else employees
+        } catch (e: Exception) {
+            employees
+        }
+    }
 
     fun changeProdRate(newValue: Int) { prodRate = if (newValue > 0) newValue else prodRate }
 
