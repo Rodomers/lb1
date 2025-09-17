@@ -1,15 +1,17 @@
+import java.util.Scanner
+
 class Enterprise(
-    var name: String,
-    private var employees: Int,
-    private var prodRate: Int,
-    private var hourFee: Float,
-    private var incomeTax: Float
+    var name: String = "Enterprise",
+    private var employees: Int = 0,
+    private var prodRate: Int = 0,
+    private var hourFee: Float = 1f,
+    private var incomeTax: Float = 0f
 ) {
-    fun changeName(newValue: String) { if (newValue != "") name = newValue else name }
+    fun changeName(newValue: String) { if (newValue != "") name = newValue else "Enterprise" }
 
     fun changeEmployees(newValue: Int) {
         employees = try {
-            if (newValue >= 0) newValue else employees
+            if (newValue >= 0) newValue else 0
         } catch (e: Exception) {
             employees
         }
@@ -26,14 +28,37 @@ class Enterprise(
     }
 }
 
+val scan = Scanner(System.`in`)
+
 fun main() {
+    println("Enterprise name: ")
+    val name = scan.nextLine().trim()
+    println("Enterprise employees: ")
+    val employees = scan.nextLine().trim().toInt()
+    println("Enterprise prod-rate: ")
+    val prodRate = scan.nextLine().trim().toInt()
+    println("Enterprise hour-fee: ")
+    val hourFee = scan.nextLine().trim().toFloat()
+    println("Enterprise income tax: ")
+    val incomeTax = scan.nextLine().trim().toFloat()
+
     val enterprise = Enterprise(
-        name = "Global Innovations Ltd.",
-        employees = 150,
-        prodRate = 8,
-        hourFee = 25.50f,
-        incomeTax = 0.85f
+        name = name,
+        employees = employees,
+        prodRate = prodRate,
+        hourFee = hourFee,
+        incomeTax = incomeTax
     )
+
+    println(enterprise.countPayout())
+
+    println("New enterprise name: ")
+    val newName = scan.nextLine().trim()
+    println("New tax: ")
+    val newTax = scan.nextLine().trim().toFloat()
+
+    enterprise.changeName(newName)
+    enterprise.changeIncomeTax(newTax)
 
     println(enterprise.countPayout())
 }
