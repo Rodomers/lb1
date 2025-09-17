@@ -5,15 +5,15 @@ class Enterprise(
     private var hourFee: Float,
     private var incomeTax: Float
 ) {
-    fun changeName(newValue: String) { name = newValue }
+    fun changeName(newValue: String) { if (newValue != "") name = newValue else name }
 
-    fun changeEmployees(newValue: Int) { employees = newValue }
+    fun changeEmployees(newValue: Int) { employees = if (newValue >= 0) newValue else employees }
 
-    fun changeProdRate(newValue: Int) { prodRate = newValue }
+    fun changeProdRate(newValue: Int) { prodRate = if (newValue > 0) newValue else prodRate }
 
-    fun changeHourFee(newValue: Float) { hourFee = newValue }
+    fun changeHourFee(newValue: Float) { if (newValue > 0) hourFee = newValue else hourFee }
 
-    fun changeIncomeTax(newValue: Float) { incomeTax = newValue }
+    fun changeIncomeTax(newValue: Float) { if (newValue > 0) incomeTax = newValue else incomeTax }
 
     fun countPayout(): Int {
         return (employees * prodRate * hourFee * (1 - incomeTax)).toInt()
