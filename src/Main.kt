@@ -13,7 +13,7 @@ class Enterprise(
 
     fun changeHourFee(newValue: Float) { if (newValue > 0) hourFee = newValue else hourFee }
 
-    fun changeIncomeTax(newValue: Float) { if (newValue > 0) incomeTax = newValue else incomeTax }
+    fun changeIncomeTax(newValue: Float) { if (newValue > 0 && newValue < 1) incomeTax = newValue else incomeTax }
 
     fun countPayout(): Int {
         return (employees * prodRate * hourFee * (1 - incomeTax)).toInt()
